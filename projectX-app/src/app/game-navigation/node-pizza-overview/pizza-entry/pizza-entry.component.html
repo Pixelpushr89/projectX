@@ -1,0 +1,13 @@
+
+
+
+<a href="#" class="list-group-item clearfix" (click)="onSelect()">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ pizza.name }}</h4>
+    <p class="list-gourp-item-text">{{pizza.description}}</p>
+  </div>
+
+  <div class="pull-right">
+    <img [src]="pizza.imagePath" alt="" class="img-responsive" style="max-height: 50px;" />
+  </div>
+</a>
