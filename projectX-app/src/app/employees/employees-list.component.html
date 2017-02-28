@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h1>Mitarbeiter Liste</h1>
+
+      <div class="list-group" *ngFor="let entry of employeesList; let i = index">
+          <a class="list-group-item" [routerLink]="['detail', i]">
+            <h4 class="list-group-item-heading">{{ entry.name }}</h4>
+            <p class="list-group-item-text">{{ entry.description }}</p>
+          </a>
+      </div>
+
+    </div>
+
+    <div class="col-xs-6">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+  <button type="button" name="button" class="btn btn-primary" (click)="onNavigation()">Zur Startseite</button>
+
+<input type="text" #input (input)="0">
+<hr>
+
+<a [routerLink]="['detail', input.value]">Detail</a>

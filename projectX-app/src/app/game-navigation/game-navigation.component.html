@@ -1,9 +1,9 @@
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Filialen Übersicht</a></li>
-  <li role="presentation"><a href="#">Mitarbeiter</a></li>
+  <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/']">Filialen Übersicht</a></li>
+  <li role="presentation" routerLinkActive="active"><a [routerLink]="['/employees-list']">Mitarbeiter</a></li>
   <li role="presentation"><a href="#">Lager</a></li>
   <li role="presentation"><a href="#">Lieferant</a></li>
   <li role="presentation"><a href="#">Gäste</a></li>
   <li role="presentation"><a href="#">Einrichtung</a></li>
-  <li role="presentation"><a href="#">Pizzaliste</a></li>
+  <li role="presentation" routerLinkActive="active"><a [routerLink]="['/pizza-list']">Pizzaliste</a></li>
 </ul>

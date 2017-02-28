@@ -8,6 +8,11 @@ import { GameOverviewComponent } from './game-overview/game-overview.component';
 import { GameNavigationComponent } from './game-navigation/game-navigation.component';
 import { NodePizzaOverviewComponent } from './game-navigation/node-pizza-overview/node-pizza-overview.component';
 import { PizzaEntryComponent } from './game-navigation/node-pizza-overview/pizza-entry/pizza-entry.component';
+import { EmployeesDetailComponent } from './employees/employees-detail.component';
+import { EmployeesListComponent } from './employees/employees-list.component';
+import { HomeComponent } from './home.component';
+import { routing } from "./app.routing";
+import { employeesDetailGuard } from './employees/employees-detail.guard';
 
 @NgModule({
   declarations: [
@@ -15,14 +20,16 @@ import { PizzaEntryComponent } from './game-navigation/node-pizza-overview/pizza
     GameOverviewComponent,
     GameNavigationComponent,
     NodePizzaOverviewComponent,
-    PizzaEntryComponent
+    PizzaEntryComponent,
+    EmployeesListComponent,
+    EmployeesDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule
+    routing
   ],
-  providers: [],
+  providers: [employeesDetailGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
