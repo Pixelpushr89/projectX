@@ -1,1 +1,27 @@
-Home Component
+<h3>Home Component</h3>
+
+
+<div class="col-xs-6" *ngIf="!questIsActive | async">
+    <div class="list-group" *ngFor="let entry of questlist; let i = index">
+        <a class="list-group-item" [routerLink]="['questDetail', i]">
+        {{ entry.name }} | Time: {{ entry.time }} | Exp: {{ entry.exp }} | Gold : {{ entry.gold }}
+        </a>
+    </div>
+</div>
+
+<div class="col-xs-6">
+    <router-outlet></router-outlet>
+</div>
+
+<hr>
+
+<div *ngFor="let entry of myUser">
+   xx {{ entry }}xx
+</div>
+
+<div *ngFor="let entry of questIsActives | async">
+   xx {{ entry }}xx
+</div>
+
+<button (click)="onGetData()">onGetData</button>
+<button (click)="onSendData()">onSendData</button>

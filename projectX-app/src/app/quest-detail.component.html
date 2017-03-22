@@ -1,0 +1,39 @@
+Details zur Quest
+
+<form [formGroup]="questStartForm" (ngSubmit)="onSubmit()"> 
+    <input type="text" formControlName="id" >
+    <input type="text" formControlName="exp" >
+    <input type="text" formControlName="time" >
+    <input type="text" formControlName="gold" >
+
+    <div class="row">
+        
+        <div class="col-xs-12">
+            <span>{{ selectedQuest.name }}</span>
+            
+        </div>
+        
+    </div>
+    
+
+    <div class="row">
+        
+        <div class="col-xs-12">
+            {{ selectedQuest.exp }}
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        
+        <div class="col-xs-12">
+            {{ selectedQuest.gold }}
+        </div>
+        
+    </div>
+
+  
+    <button type="submit">Starten</button>
+
+</form>
+

@@ -23,7 +23,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     this.employeesList = this.employeesService.getEmployeesList();
   }
 
-    ngOnDestroy(){
+  ngOnDestroy(){
 
   }
 
