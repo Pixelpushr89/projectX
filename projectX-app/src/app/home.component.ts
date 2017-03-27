@@ -1,4 +1,5 @@
-import { Component, OnInit , Output} from '@angular/core';
+import { Component, OnInit , Output, OnChanges, SimpleChange, Input, EventEmitter} from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { HttpService } from "./services/http.service";
 import { questService } from "./services/quests.service";
@@ -12,16 +13,24 @@ import { Quest } from "./models/quest.model";
 })
 
 export class HomeComponent implements OnInit {
-  questIsActive = this.questService.isQuestActive();
-  questIsActives = this.questService.isQuestActive();
-  myUser: any = [];
+  questIsActive = false;  
+  myChar: any = [];
+
+  counterValue = this.questService.counterValue;
+  newValue : any;
 
   questlist : Quest[];
 
   constructor(
     private questService: questService,
-    private httpService: HttpService
-    ) { }
+    private httpService: HttpService,
+    private router : Router
+    ) {
+      router.events.subscribe((questIsActive) => {
+        // see also 
+        console.log("pe",questIsActive) 
+      });      
+    }
 
   onSendData(){
     this.httpService.sendCharData({name: 'test', gold: '1000', exp: 0, questIsActive: false})
@@ -33,9 +42,12 @@ export class HomeComponent implements OnInit {
   
   onGetData(){
     this.questService.isQuestActive().subscribe(
-        data => this.myUser = data,
-        data => console.log(data)                   
+        data => this.myChar = data                      
     );
+  }
+
+  updateTest(){
+    this.questIsActive = true;
   }
 
   ngOnInit() {
@@ -44,19 +56,24 @@ export class HomeComponent implements OnInit {
     
 console.log("init",this.questIsActive);
     this.questlist = this.questService.getQuestList(); 
-
+ this.onGetData();
     //if(this.questIsActive){
    //   this.showActiveQuest();
   //  }
     
   }
 
-  ngOnChanges() {
+    ngDoCheck(changes: {[propKey: string]: SimpleChange}) {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     //Add 'implements OnChanges' to the class.
-    console.log(this.questIsActive);
+    console.log("ngAfterViewChecked",this.questIsActive);
   }
 
+  
+
+  @Output() counterChange = new EventEmitter();
+
+  
   showActiveQuest() {
     var time = 3;
     var setTimerInterval;
@@ -79,6 +96,11 @@ console.log("init",this.questIsActive);
    // setTimeout(() => {
     //    this.questIsActive = false;
   //   }, 1000)
-  }
+}
+
+
+
+
+  
   
 }
